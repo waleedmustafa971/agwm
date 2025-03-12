@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGWM Waste Management System - Wireframe</title>
+    <style>
+        /* Wireframe Blueprint Style */
+        
+         :root {
+            --wireframe-blue: #0066cc;
+            --wireframe-light-blue: #cce0ff;
+            --wireframe-border: #3388dd;
+            --wireframe-bg: #f0f8ff;
+            --wireframe-grid: #e6f0ff;
+            --wireframe-text: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
+        
+        body {
+            background-color: var(--wireframe-bg);
+            color: var(--wireframe-text);
+            background-image: linear-gradient(var(--wireframe-grid) 1px, transparent 1px), linear-gradient(90deg, var(--wireframe-grid) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            border-bottom: 2px solid var(--wireframe-blue);
+            margin-bottom: 30px;
+            padding: 15px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--wireframe-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .wireframe-box {
+            border: 2px solid var(--wireframe-border);
+            border-radius: 0;
+            padding: 20px;
+            margin-bottom: 30px;
+            background-color: white;
+            position: relative;
+        }
+        
+        .wireframe-box::before {
+            content: "COMPONENT";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background-color: white;
+            padding: 0 10px;
+            color: var(--wireframe-blue);
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .wireframe-title {
+            margin-bottom: 20px;
+            color: var(--wireframe-blue);
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-bottom: 1px dashed var(--wireframe-border);
+            padding-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            border: 1px dashed var(--wireframe-border);
+            padding: 15px;
+            position: relative;
+        }
+        
+        .form-group::before {
+            content: attr(data-label);
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background-color: white;
+            padding: 0 5px;
+            color: var(--wireframe-blue);
+            font-size: 12px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--wireframe-blue);
+        }
+        
+        select,
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--wireframe-border);
+            font-size: 14px;
+            background-color: white;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: 2px solid var(--wireframe-blue);
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            background-color: white;
+            color: var(--wireframe-blue);
+        }
+        
+        .btn-primary {
+            background-color: var(--wireframe-light-blue);
+        }
+        
+        .actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 30px;
+            border-top: 1px dashed var(--wireframe-border);
+            padding-top: 20px;
+        }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .table th,
+        .table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid var(--wireframe-border);
+        }
+        
+        .table th {
+            background-color: var(--wireframe-light-blue);
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+        
+        .status {
+            padding: 5px 10px;
+            border: 1px solid var(--wireframe-border);
+            font-size: 12px;
+            text-transform: uppercase;
+            display: inline-block;
+            background-color: white;
+        }
+        
+        .status-pending {
+            background-color: var(--wireframe-light-blue);
+        }
+        
+        .status-scanned {
+            background-color: #e6ffe6;
+            border-color: #66cc66;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+            border: 1px dashed var(--wireframe-border);
+            padding: 15px;
+            position: relative;
+        }
+        
+        .section::before {
+            content: "SECTION";
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background-color: white;
+            padding: 0 5px;
+            color: var(--wireframe-blue);
+            font-size: 12px;
+        }
+        
+        .section-title {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--wireframe-blue);
+            text-transform: uppercase;
+        }
+        
+        .info-row {
+            display: flex;
+            margin-bottom: 10px;
+            border-bottom: 1px dotted var(--wireframe-border);
+            padding-bottom: 5px;
+        }
+        
+        .info-label {
+            flex: 0 0 180px;
+            font-weight: bold;
+            color: var(--wireframe-blue);
+        }
+        
+        .tab-container {
+            margin-bottom: 25px;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid var(--wireframe-border);
+            margin-bottom: 20px;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            border: 1px solid var(--wireframe-border);
+            border-bottom: none;
+            margin-right: 5px;
+            background-color: white;
+        }
+        
+        .tab.active {
+            background-color: var(--wireframe-light-blue);
+            border-bottom: 2px solid white;
+            margin-bottom: -2px;
+        }
+        
+        .screen {
+            display: none;
+            border: 3px solid var(--wireframe-blue);
+            padding: 20px;
+            background-color: white;
+            position: relative;
+        }
+        
+        .screen::before {
+            content: "SCREEN";
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background-color: var(--wireframe-blue);
+            color: white;
+            padding: 2px 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .screen.active {
+            display: block;
+        }
+        
+        .back-link {
+            color: var(--wireframe-blue);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+            border: 1px solid var(--wireframe-blue);
+            padding: 5px 15px;
+            background-color: white;
+        }
+        
+        .back-link:before {
+            content: "←";
+            margin-right: 8px;
+            font-weight: bold;
+        }
+        /* Blueprint grid lines */
+        
+        .blueprint-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+        /* Annotations */
+        
+        .annotation {
+            position: absolute;
+            color: var(--wireframe-blue);
+            font-size: 12px;
+            border: 1px dashed var(--wireframe-blue);
+            padding: 5px;
+            background-color: rgba(255, 255, 255, 0.8);
+            max-width: 200px;
+        }
+        
+        .annotation::before {
+            content: "";
+            position: absolute;
+            border-top: 1px dashed var(--wireframe-blue);
+            width: 50px;
+            top: 50%;
+        }
+        
+        .annotation-left {
+            right: 100%;
+            margin-right: 60px;
+        }
+        
+        .annotation-left::before {
+            left: 100%;
+        }
+        
+        .annotation-right {
+            left: 100%;
+            margin-left: 60px;
+        }
+        
+        .annotation-right::before {
+            right: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">AGWM Waste Management System - Wireframe</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Work Order Creation Screen -->
+        <div class="screen active" id="work-order-creation">
+            <div class="wireframe-box">
+                <h2 class="wireframe-title">Create Work Order</h2>
+                <form id="workOrderForm">
+                    <div class="form-group" data-label="VEHICLE SELECTION">
+                        <label for="vehicle">Vehicle</label>
+                        <select id="vehicle" required>
+                            <option value="">Select Vehicle</option>
+                            <option value="V001">V001 - Compactor Truck</option>
+                            <option value="V002">V002 - Skip Loader</option>
+                            <option value="V003">V003 - Hook Loader</option>
+                            <option value="V004">V004 - Double Skip Loader</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" data-label="AREA SELECTION">
+                        <label for="area">Area</label>
+                        <select id="area" required>
+                            <option value="">Select Area</option>
+                            <option value="Al Rigga">Al Rigga</option>
+                            <option value="Deira">Deira</option>
+                            <option value="Bur Dubai">Bur Dubai</option>
+                            <option value="Business Bay">Business Bay</option>
+                            <option value="JLT">JLT</option>
+                        </select>
+                        <div class="annotation annotation-right" style="top: 20px;">
+                            Area selection will filter available contracts
+                        </div>
+                    </div>
+
+                    <div class="form-group" data-label="CONTRACT SELECTION">
+                        <label for="contract">Contract</label>
+                        <select id="contract" required>
+                            <option value="">Select Contract</option>
+                            <!-- Will be populated based on area selection -->
+                        </select>
+                    </div>
+
+                    <div class="form-group" data-label="DRIVER SELECTION">
+                        <label for="driver">Driver</label>
+                        <select id="driver" required>
+                            <option value="">Select Driver</option>
+                            <option value="D001">D001 - John Smith</option>
+                            <option value="D002">D002 - Ahmed Khalid</option>
+                            <option value="D003">D003 - Mohammed Ali</option>
+                            <option value="D004">D004 - Raj Kumar</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" data-label="HELPER SELECTION">
+                        <label for="helper">Helper</label>
+                        <select id="helper" required>
+                            <option value="">Select Helper</option>
+                            <option value="H001">H001 - Peter Johnson</option>
+                            <option value="H002">H002 - Salim Ahmed</option>
+                            <option value="H003">H003 - Rahul Sharma</option>
+                            <option value="H004">H004 - Abdul Rahman</option>
+                        </select>
+                        <div class="annotation annotation-left" style="top: 20px;">
+                            Helper requirements vary by vehicle type
+                        </div>
+                    </div>
+
+                    <div class="form-group" data-label="DISPATCH DATE">
+                        <label>Dispatch Date</label>
+                        <div>
+                            <input type="radio" id="today" name="dispatchDate" value="today" checked>
+                            <label for="today" style="display: inline;">Today (12/03/2025)</label>
+
+                            <input type="radio" id="tomorrow" name="dispatchDate" value="tomorrow" style="width: auto; margin-left: 20px;">
+                            <label for="tomorrow" style="display: inline;">Tomorrow (13/03/2025)</label>
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <button type="submit" class="btn btn-primary">Confirm Work Order</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Work Orders List Screen -->
+        <div class="screen" id="work-orders-list">
+            <div class="wireframe-box">
+                <h2 class="wireframe-title">Work Orders for 12/03/2025</h2>
+
+                <div class="tab-container">
+                    <div class="tabs">
+                        <div class="tab active" data-tab="all">All</div>
+                        <div class="tab" data-tab="pending">Pending</div>
+                        <div class="tab" data-tab="scanned">Scanned</div>
+                    </div>
+                </div>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Work Order #</th>
+                            <th>Vehicle</th>
+                            <th>Driver</th>
+                            <th>Helper</th>
+                            <th>Contract(s)</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>WO-12032025-001</td>
+                            <td>V001 - Compactor</td>
+                            <td>D001 - John Smith</td>
+                            <td>H001 - Peter Johnson</td>
+                            <td>C100, C102</td>
+                            <td><span class="status status-pending">Pending</span></td>
+                            <td><button class="btn btn-primary btn-details" data-id="WO-12032025-001">Details</button></td>
+                        </tr>
+                        <tr>
+                            <td>WO-12032025-002</td>
+                            <td>V002 - Skip Loader</td>
+                            <td>D002 - Ahmed Khalid</td>
+                            <td>H002 - Salim Ahmed</td>
+                            <td>C105</td>
+                            <td><span class="status status-scanned">Scanned</span></td>
+                            <td><button class="btn btn-primary btn-details" data-id="WO-12032025-002">Details</button></td>
+                        </tr>
+                        <tr>
+                            <td>WO-12032025-003</td>
+                            <td>V003 - Hook Loader</td>
+                            <td>D003 - Mohammed Ali</td>
+                            <td>H003 - Rahul Sharma</td>
+                            <td>C108, C110</td>
+                            <td><span class="status status-pending">Pending</span></td>
+                            <td><button class="btn btn-primary btn-details" data-id="WO-12032025-003">Details</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="actions">
+                    <button class="btn btn-primary" id="createNewOrder">Create New Work Order</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Work Order Details Screen -->
+        <div class="screen" id="work-order-details">
+            <a href="#" class="back-link" id="backToList">Back to Work Orders List</a>
+
+            <div class="wireframe-box">
+                <h2 class="wireframe-title">Work Order Details: <span id="workOrderNumber">WO-12032025-001</span></h2>
+
+                <div class="section">
+                    <h3 class="section-title">Assignment Information</h3>
+                    <div class="info-row">
+                        <div class="info-label">Vehicle:</div>
+                        <div class="info-value">V001 - Compactor Truck</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Driver:</div>
+                        <div class="info-value">D001 - John Smith</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Helper:</div>
+                        <div class="info-value">H001 - Peter Johnson</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Dispatch Date:</div>
+                        <div class="info-value">12/03/2025</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Status:</div>
+                        <div class="info-value"><span class="status status-pending">Pending</span></div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Contract Details</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Contract Code</th>
+                                <th>Client Name</th>
+                                <th>Bins/Skips Allocated</th>
+                                <th>Bins/Skips Scanned</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>C100</td>
+                                <td>ABC Corporation</td>
+                                <td>4</td>
+                                <td>2</td>
+                                <td>450 AED</td>
+                            </tr>
+                            <tr>
+                                <td>C102</td>
+                                <td>XYZ Limited</td>
+                                <td>3</td>
+                                <td>0</td>
+                                <td>300 AED</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3"></td>
+                                <td><strong>Total Value:</strong></td>
+                                <td><strong>750 AED</strong></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+                <div class="actions">
+                    <button class="btn btn-primary" id="confirmWorkOrder">Confirm Completion</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation between screens
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.remove('active');
+            });
+            document.getElementById(screenId).classList.add('active');
+        }
+
+        // Form submission for Work Order Creation
+        document.getElementById('workOrderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showScreen('work-orders-list');
+        });
+
+        // Handle Details button clicks
+        document.querySelectorAll('.btn-details').forEach(button => {
+            button.addEventListener('click', function() {
+                const workOrderId = this.getAttribute('data-id');
+                document.getElementById('workOrderNumber').textContent = workOrderId;
+                showScreen('work-order-details');
+            });
+        });
+
+        // Create New Work Order button
+        document.getElementById('createNewOrder').addEventListener('click', function() {
+            showScreen('work-order-creation');
+        });
+
+        // Back button on Details screen
+        document.getElementById('backToList').addEventListener('click', function(e) {
+            e.preventDefault();
+            showScreen('work-orders-list');
+        });
+
+        // Confirm Work Order Completion
+        document.getElementById('confirmWorkOrder').addEventListener('click', function() {
+            alert('Work Order Confirmed as Completed!');
+            showScreen('work-orders-list');
+        });
+
+        // Area selection changes available contracts
+        document.getElementById('area').addEventListener('change', function() {
+            const area = this.value;
+            const contractSelect = document.getElementById('contract');
+
+            // Clear existing options
+            contractSelect.innerHTML = '<option value="">Select Contract</option>';
+
+            if (!area) return;
+
+            // Add contracts based on selected area
+            if (area === 'Al Rigga') {
+                contractSelect.innerHTML += `
+                    <option value="C100">C100 - ABC Corporation</option>
+                    <option value="C101">C101 - Rigga Plaza</option>
+                    <option value="C102">C102 - XYZ Limited</option>
+                `;
+            } else if (area === 'Deira') {
+                contractSelect.innerHTML += `
+                    <option value="C103">C103 - Deira City Center</option>
+                    <option value="C104">C104 - Gold Souk Mall</option>
+                `;
+            } else if (area === 'Bur Dubai') {
+                contractSelect.innerHTML += `
+                    <option value="C105">C105 - Dubai Museum</option>
+                    <option value="C106">C106 - Textile Market</option>
+                `;
+            } else if (area === 'Business Bay') {
+                contractSelect.innerHTML += `
+                    <option value="C107">C107 - Bay Square</option>
+                    <option value="C108">C108 - Executive Towers</option>
+                `;
+            } else if (area === 'JLT') {
+                contractSelect.innerHTML += `
+                    <option value="C109">C109 - Cluster A</option>
+                    <option value="C110">C110 - Cluster D</option>
+                `;
+            }
+        });
+
+        // Handle tab switching on the list screen
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+
+                // You would filter the table here in a real implementation
+                const tabType = this.getAttribute('data-tab');
+                console.log('Switched to tab:', tabType);
+            });
+        });
+
+        // Vehicle selection affects helper requirements
+        document.getElementById('vehicle').addEventListener('change', function() {
+            const vehicle = this.value;
+            const helperSelect = document.getElementById('helper');
+
+            if (vehicle === 'V001') { // Compactor Truck needs 2 helpers
+                alert('Note: Compactor trucks require 2 helpers. Please select the primary helper here and add additional helper(s) in the next screen.');
+            } else if (vehicle === 'V004') { // Double Skip Loader
+                alert('Note: Double Skip Loaders can serve 2 clients in one trip.');
+            }
+        });
+    </script>
+</body>
+
+</html>
